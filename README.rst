@@ -73,6 +73,9 @@ Build googletest at Linux
 
 Output
 ~~~~~~~~~~~~
+
+.. code:: console
+
     $ # tree build/googlemock/ -L 2
     build/googlemock/
     ├── CMakeFiles
