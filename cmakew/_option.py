@@ -1,0 +1,86 @@
+# encoding: utf-8
+
+"""
+.. codeauthor:: Tsuyoshi Hombashi <gogogo.vm@gmail.com>
+"""
+
+from __future__ import absolute_import
+from __future__ import unicode_literals
+import argparse
+
+import logbook
+
+from ._common import (
+    QUIET_LOG_LEVEL,
+    BuildAction,
+    BuildType,
+)
+
+
+DEFAULT_CMAKE_OPTIONS_FILE = "cmake_options.json"
+
+
+def parse_option():
+    description = "A CLI tool for CMake and compiler wrapper."
+    epilog = ""
+    parser = argparse.ArgumentParser(
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        description=description, epilog=epilog)
+
+    parser.add_argument(
+        "source_dir", metavar="SOURCE_DIR_PATH",
+        help="""relative path to the source directory.""")
+
+    group = parser.add_argument_group("Directory Options")
+    group.add_argument(
+        "--build-dir", default="build",
+        help="""
+        relative path to the build output directory
+        (defaults to '%(default)s').
+        """)
+
+    group = parser.add_argument_group("Build Options")
+    group.add_argument(
+        "--action", choices=BuildAction.LIST, default=BuildAction.DEFAULT,
+        help="""
+        cmake: execute CMake and exit.
+        clean: delete existing build directory and exit.
+        recmake: delete existing CMakeCache and execute CMake after that.
+        build: execute MSBuild to Visual Studio solution files that created by cmake.
+        rebuild: delete existing build directory and execute CMake and
+        MSBuild after that.
+        defaults to '%(default)s'.
+        """)
+
+    group = parser.add_argument_group("CMake Options")
+    group.add_argument(
+        "--cmake-options",
+        default=DEFAULT_CMAKE_OPTIONS_FILE,
+        help="""
+        path to the CMake options file. use "{key :value, ...}"
+        to set specific parameters. defaults to %(default)s.
+        """)
+    group.add_argument(
+        "--build-type", choices=BuildType.LIST, default=BuildType.DEFAULT,
+        help="defaults to %(default)s.")
+    group.add_argument(
+        "--generator",
+        help="""
+        generator that pass to cmake.
+        default value will be decided by execution platform:
+        (a) if executed at Windows and Visual Studio is installed in C: or D:
+        drive, cmakew will pass 'Visual Studio NN'  as a generator to cmake.
+        (b) "Unix Makefiles" otherwise
+        """)
+
+    group = parser.add_mutually_exclusive_group()
+    group.add_argument(
+        "--debug", dest="log_level", action="store_const",
+        const=logbook.DEBUG, default=logbook.INFO,
+        help="for debug print.")
+    group.add_argument(
+        "--quiet", dest="log_level", action="store_const",
+        const=QUIET_LOG_LEVEL, default=logbook.INFO,
+        help="suppress execution log messages.")
+
+    return parser.parse_args()
