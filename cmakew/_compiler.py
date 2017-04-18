@@ -60,8 +60,16 @@ class AbstractCompiler(CompilerInterface):
     def _run_build(self, build_command):
         runner = subprocrunner.SubprocessRunner(build_command)
         runner.run()
-        logger.info(runner.stdout)
-        if typepy.is_not_null_string(runner.stderr):
+
+        if typepy.is_not_null_string(runner.stdout):
+            logger.info(runner.stdout)
+
+        if typepy.is_null_string(runner.stderr):
+            return
+
+        if runner.returncode == 0:
+            logger.info(runner.stderr)
+        else:
             logger.error(runner.stderr)
 
     def clean(self):

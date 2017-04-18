@@ -138,7 +138,12 @@ def main():
         if typepy.is_not_null_string(runner.stdout):
             logger.info(runner.stdout)
 
-        if typepy.is_not_null_string(runner.stderr):
+        if typepy.is_null_string(runner.stderr):
+            return
+
+        if runner.returncode == 0:
+            logger.info(runner.stderr)
+        else:
             logger.error(runner.stderr)
 
     if options.action in [BuildAction.BUILD, BuildAction.REBUILD]:
