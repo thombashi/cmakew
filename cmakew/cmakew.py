@@ -138,7 +138,8 @@ def main():
             logger.info(runner.stdout)
 
         if typepy.is_null_string(runner.stderr):
-            return
+            # cmake will output results to stderr if executed normally
+            return 1
 
         if runner.returncode == 0:
             logger.info(runner.stderr)
