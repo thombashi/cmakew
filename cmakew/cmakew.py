@@ -91,7 +91,6 @@ class CMakeCommandBuilder(object):
                 "cmake option file not found: path='{}'".format(file_path))
             return {}
 
-        cmake_options = {}
         with open(file_path) as f:
             cmake_options = json.loads(f.read())
 

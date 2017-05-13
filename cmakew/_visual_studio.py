@@ -113,7 +113,5 @@ class VisualStudioInfo(object):
                         self.__msbuild_path = msbuild_path
                         return
 
-        #raise OSError("MSBuild not found")
-
 
 vsinfo = VisualStudioInfo()
