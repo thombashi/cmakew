@@ -21,6 +21,8 @@ def set_logger(is_enable):
     else:
         logger.disable()
 
+    subprocrunner.SubprocessRunner.default_error_log_level = logbook.DEBUG
+
 
 def set_log_level(log_level):
     """
