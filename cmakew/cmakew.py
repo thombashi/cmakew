@@ -139,6 +139,10 @@ def main():
 
         if typepy.is_null_string(runner.stderr):
             # cmake will output results to stderr if executed normally
+
+            logger.error(
+                "unexpected error occurred: stdout={}".format(runner.stdout))
+
             return 1
 
         if runner.returncode == 0:
