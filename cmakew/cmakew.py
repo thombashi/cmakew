@@ -131,11 +131,9 @@ def main():
         command_builder = CMakeCommandBuilder(options)
         runner = subprocrunner.SubprocessRunner(
             command_builder.get_cmake_commmand())
+
         with Cd(build_dir):
             runner.run()
-
-        if typepy.is_not_null_string(runner.stdout):
-            logger.info(runner.stdout)
 
         if typepy.is_null_string(runner.stderr):
             # cmake will output results to stderr if executed normally
@@ -146,9 +144,18 @@ def main():
             return 1
 
         if runner.returncode == 0:
-            logger.info(runner.stderr)
+            logging_func = logger.info
         else:
-            logger.error(runner.stderr)
+            logging_func = logger.error
+
+        if typepy.is_not_null_string(runner.stdout):
+            logging_func(runner.stdout)
+
+        if typepy.is_not_null_string(runner.stderr):
+            logging_func(runner.stderr)
+
+        if runner.returncode != 0:
+            return 1
 
     if options.action in [BuildAction.BUILD, BuildAction.REBUILD]:
         with Cd(build_dir):
