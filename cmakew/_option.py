@@ -66,10 +66,10 @@ def parse_option():
     group.add_argument(
         "--generator",
         help="""
-        generator that pass to cmake.
-        default value will be decided by execution platform:
+        generator that passes to cmake.
+        the default value decided by execution platform:
         (a) if executed at Windows and Visual Studio is installed in C: or D:
-        drive, cmakew will pass 'Visual Studio NN'  as a generator to cmake.
+        drive, cmakew pass 'Visual Studio NN'  as a generator to cmake.
         (b) "Unix Makefiles" otherwise
         """)
 
