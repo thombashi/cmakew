@@ -10,13 +10,11 @@ cmakew
 
 Summary
 -------
-
 A CLI tool for CMake and compiler wrapper.
 
 
 Examples
 ==========
-
 Build googletest at Linux
 --------------------------
 
@@ -73,7 +71,6 @@ Build googletest at Linux
 
 Output
 ~~~~~~~~~~~~
-
 .. code:: console
 
     $ # tree build/googlemock/ -L 2
@@ -99,10 +96,8 @@ Output
     5 directories, 12 files
 
 
-
 Installation
 ============
-
 .. code:: console
 
     pip install cmakew
@@ -110,7 +105,6 @@ Installation
 
 cmakew help
 ========================
-
 .. code:: console
 
     usage: cmakew [-h] [--build-dir BUILD_DIR]
@@ -152,16 +146,15 @@ cmakew help
       --build-type {Debug,Release}
                             defaults to Debug.
       --generator GENERATOR
-                            generator that pass to cmake. default value will be
+                            generator that passes to cmake. the default value
                             decided by execution platform: (a) if executed at
                             Windows and Visual Studio is installed in C: or D:
-                            drive, cmakew will pass 'Visual Studio NN' as a
-                            generator to cmake. (b) "Unix Makefiles" otherwise
+                            drive, cmakew pass 'Visual Studio NN' as a generator
+                            to cmake. (b) "Unix Makefiles" otherwise
 
 
 Dependencies
 ============
-
 Python 2.7+ or 3.3+
 
 - `logbook <http://logbook.readthedocs.io/en/stable/>`__
