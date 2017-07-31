@@ -29,7 +29,7 @@ with open(os.path.join(REQUIREMENT_DIR, "requirements.txt")) as f:
 
 setuptools.setup(
     name="cmakew",
-    version="0.0.4",
+    version="0.0.5",
 
     author="Tsuyoshi Hombashi",
     author_email="tsuyoshi.hombashi@gmail.com",
