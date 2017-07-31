@@ -52,7 +52,7 @@ class AbstractCompiler(CompilerInterface):
 
     def _validate_build_dir_path(self, dir_path):
         if typepy.is_null_string(dir_path):
-            raise ValueError("build path must not a empty directory path")
+            raise ValueError("build path must not an empty directory path")
 
         if dir_path == "/":
             raise ValueError(
