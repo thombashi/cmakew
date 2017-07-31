@@ -30,18 +30,22 @@ with open(os.path.join(REQUIREMENT_DIR, "requirements.txt")) as f:
 setuptools.setup(
     name="cmakew",
     version="0.0.4",
+
     author="Tsuyoshi Hombashi",
     author_email="tsuyoshi.hombashi@gmail.com",
-    url="https://github.com/thombashi/cmakew",
     description=summary,
-    keywords=["cmake", "build", "Visual Studio"],
-    long_description=long_description,
-    license="MIT License",
     include_package_data=True,
+    keywords=["cmake", "build", "Visual Studio"],
+    license="MIT License",
+    long_description=long_description,
     packages=setuptools.find_packages(exclude=['test*']),
+    url="https://github.com/thombashi/cmakew",
+
     install_requires=install_requires,
     setup_requires=pytest_runner,
     tests_require=[],
+    python_requires='>=2.7,!=3.0.*,!=3.1.*,!=3.2.*',
+
     classifiers=[
         "Development Status :: 3 - Alpha",
         "Environment :: Console",
