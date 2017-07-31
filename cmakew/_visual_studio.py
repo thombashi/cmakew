@@ -40,13 +40,16 @@ class VisualStudioInfo(object):
     def msbuild_path(self):
         return self.__msbuild_path
 
-    def __init__(self, search_drive_list=["C:"]):
+    def __init__(self, search_drive_list=None):
         self.__version_info_set = set()
         self.__max_version_info = None
         self.__msbuild_path = None
 
         if platform.system() != "Windows":
             return
+
+        if not search_drive_list:
+            search_drive_list = ["C:"]
 
         self.__program_files_dir_list = [
             "Program Files",
