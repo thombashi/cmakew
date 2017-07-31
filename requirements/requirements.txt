@@ -1,4 +1,4 @@
-logbook>=1.0.0
+logbook>=1.1.0
 six
-subprocrunner>=0.8.2
-typepy>=0.0.12
+subprocrunner>=0.8.4
+typepy>=0.0.15
