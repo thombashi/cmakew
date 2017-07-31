@@ -61,8 +61,7 @@ class CMakeCommandBuilder(object):
     def __get_win_generator():
         return "Visual Studio {:d} {:s}".format(
             vsinfo.version_info.major,
-            "Win64" if platform.architecture()[0] == "64bit" else ""
-        )
+            "Win64" if platform.architecture()[0] == "64bit" else "")
 
     def __get_generator(self):
         if self.__options.generator is not None:
