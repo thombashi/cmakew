@@ -71,12 +71,13 @@ class CMakeCommandBuilder(object):
 
         if system == "Windows":
             return self.__get_win_generator()
-        elif system == "Linux":
-            return "Unix Makefiles"
-        else:
+        if system == "Linux":
             return "Unix Makefiles"
 
-        raise NotImplementedError("not supported system: {}".format(system))
+        logger.debug(
+            "unexpected system '{}', considered as Linux".format(system))
+
+        return "Unix Makefiles"
 
     def __read_cmake_options(self):
         file_path = self.__options.cmake_options
