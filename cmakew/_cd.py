@@ -14,6 +14,7 @@ class Cd(object):
 
     def __init__(self, new_path):
         self.__new_path = os.path.expanduser(new_path)
+        self.__saved_path = None
 
     def __enter__(self):
         self.__saved_path = os.getcwd()
