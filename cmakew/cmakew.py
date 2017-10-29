@@ -135,24 +135,18 @@ def main():
         with Cd(build_dir):
             runner.run()
 
-        if typepy.is_null_string(runner.stderr):
-            # cmake will output results to stderr if executed normally
-
-            logger.error(
-                "unexpected error occurred: stdout={}".format(runner.stdout))
-
-            return 1
-
         if runner.returncode == 0:
-            logging_func = logger.info
+            logging_func_stdout = logger.info
+            logging_func_stderr = logger.warn
         else:
-            logging_func = logger.error
+            logging_func_stdout = logger.info
+            logging_func_stderr = logger.error
 
         if typepy.is_not_null_string(runner.stdout):
-            logging_func(runner.stdout)
+            logging_func_stdout(runner.stdout)
 
         if typepy.is_not_null_string(runner.stderr):
-            logging_func(runner.stderr)
+            logging_func_stderr(runner.stderr)
 
         if runner.returncode != 0:
             return 1
