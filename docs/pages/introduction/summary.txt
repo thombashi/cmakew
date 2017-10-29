@@ -1,1 +1,1 @@
-A CLI tool for CMake wrapper.
+A CMake wrapper tool.

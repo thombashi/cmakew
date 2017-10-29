@@ -1,16 +1,14 @@
 cmakew
 ========
-
 .. image:: https://badge.fury.io/py/cmakew.svg
     :target: https://badge.fury.io/py/cmakew
 
 .. image:: https://img.shields.io/pypi/pyversions/cmakew.svg
     :target: https://pypi.python.org/pypi/cmakew
 
-
 Summary
 -------
-A CLI tool for CMake and compiler wrapper.
+A CMake wrapper tool.
 
 
 Examples
@@ -20,7 +18,9 @@ Build googletest at Linux
 
 .. code:: console
 
-    $ cmakew googletest-release-1.8.0
+    $ wget https://github.com/google/googletest/archive/release-1.8.0.tar.gz
+    $ tar xvf release-1.8.0.tar.gz
+    $ cmakew googletest-release-1.8.0/
     [INFO] cmakew: -- The C compiler identification is GNU 6.2.1
     -- The CXX compiler identification is GNU 6.2.1
     -- Check for working C compiler: /usr/bin/cc
@@ -73,7 +73,7 @@ Output
 ~~~~~~~~~~~~
 .. code:: console
 
-    $ # tree build/googlemock/ -L 2
+    $ tree build/googlemock/ -L 2
     build/googlemock/
     ├── CMakeFiles
     │   ├── CMakeDirectoryInformation.cmake
