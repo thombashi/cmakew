@@ -101,7 +101,7 @@ def main():
     try:
         compiler = CompilerFactory.create(build_dir)
     except ValueError as e:
-        logger.error(e)
+        logger.error("{:s}: {}".format(e.__class__.__name__, e))
         return errno.EINVAL
 
     if options.action in [BuildAction.CLEAN, BuildAction.REBUILD]:
