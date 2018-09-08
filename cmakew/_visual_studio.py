@@ -51,10 +51,7 @@ class VisualStudioInfo(object):
         if not search_drive_list:
             search_drive_list = ["C:"]
 
-        self.__program_files_dir_list = [
-            "Program Files",
-            "Program Files (x86)",
-        ]
+        self.__program_files_dir_list = ["Program Files", "Program Files (x86)"]
 
         self.__detect_version(search_drive_list)
         self.__detect_msbuild(search_drive_list)
@@ -63,11 +60,11 @@ class VisualStudioInfo(object):
         max_vs_version = 0
 
         for search_drive, program_files_dir in itertools.product(
-                search_drive_list, self.__program_files_dir_list):
+            search_drive_list, self.__program_files_dir_list
+        ):
 
             try:
-                dir_list = os.listdir(
-                    "{:s}\\{:s}".format(search_drive, program_files_dir))
+                dir_list = os.listdir("{:s}\\{:s}".format(search_drive, program_files_dir))
             except WindowsError:
                 continue
 
@@ -76,11 +73,9 @@ class VisualStudioInfo(object):
                 if match is None:
                     continue
 
-                version_string = self.__RE_VS_VERSION.search(
-                    match.group()).group()
+                version_string = self.__RE_VS_VERSION.search(match.group()).group()
                 vs_version = float(version_string)
-                version_info = self.VersionInfo(*[
-                    int(ver) for ver in version_string.split(".")])
+                version_info = self.VersionInfo(*[int(ver) for ver in version_string.split(".")])
                 self.__version_info_set.add(version_info)
 
                 if vs_version > max_vs_version:
@@ -89,11 +84,11 @@ class VisualStudioInfo(object):
 
     def __detect_msbuild(self, search_drive_list):
         for search_drive, program_files_dir in itertools.product(
-                search_drive_list, self.__program_files_dir_list):
+            search_drive_list, self.__program_files_dir_list
+        ):
 
             try:
-                dir_list = os.listdir(
-                    "{:s}\\{:s}".format(search_drive, program_files_dir))
+                dir_list = os.listdir("{:s}\\{:s}".format(search_drive, program_files_dir))
             except WindowsError:
                 continue
 
@@ -102,15 +97,16 @@ class VisualStudioInfo(object):
                     continue
 
                 for version_info in reversed(sorted(self.__version_info_set)):
-                    msbuild_path = "/".join([
-                        search_drive,
-                        program_files_dir,
-                        dir_name,
-                        "{:d}.{:d}".format(
-                            version_info.major, version_info.minor),
-                        "Bin",
-                        "MSBuild.exe",
-                    ])
+                    msbuild_path = "/".join(
+                        [
+                            search_drive,
+                            program_files_dir,
+                            dir_name,
+                            "{:d}.{:d}".format(version_info.major, version_info.minor),
+                            "Bin",
+                            "MSBuild.exe",
+                        ]
+                    )
 
                     if os.path.isfile(msbuild_path):
                         self.__msbuild_path = msbuild_path

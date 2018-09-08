@@ -28,37 +28,34 @@ from ._visual_studio import vsinfo
 
 
 ColorizedStderrHandler(
-    level=logbook.DEBUG,
-    format_string="[{record.level_name}] {record.channel}: {record.message}"
+    level=logbook.DEBUG, format_string="[{record.level_name}] {record.channel}: {record.message}"
 ).push_application()
 
 
 class CMakeCommandBuilder(object):
-
     def __init__(self, options):
         self.__options = options
 
     def get_cmake_commmand(self):
         cmake_command_list = [
-            'cmake ../{:s}'.format(self.__options.source_dir),
+            "cmake ../{:s}".format(self.__options.source_dir),
             "-DCMAKE_BUILD_TYPE={:s}".format(self.__options.build_type),
         ]
 
         for key, value in six.iteritems(self.__read_cmake_options()):
-            cmake_command_list.append('-D{}={}'.format(key, value))
+            cmake_command_list.append("-D{}={}".format(key, value))
 
         generator = self.__get_generator()
         if generator is not None:
-            cmake_command_list.append('-G "{:s}"'.format(
-                generator))
+            cmake_command_list.append('-G "{:s}"'.format(generator))
 
         return " ".join(cmake_command_list)
 
     @staticmethod
     def __get_win_generator():
         return "Visual Studio {:d} {:s}".format(
-            vsinfo.version_info.major,
-            "Win64" if platform.architecture()[0] == "64bit" else "")
+            vsinfo.version_info.major, "Win64" if platform.architecture()[0] == "64bit" else ""
+        )
 
     def __get_generator(self):
         if self.__options.generator is not None:
@@ -71,8 +68,7 @@ class CMakeCommandBuilder(object):
         if system == "Linux":
             return "Unix Makefiles"
 
-        logger.debug(
-            "unexpected system '{}', considered as Linux".format(system))
+        logger.debug("unexpected system '{}', considered as Linux".format(system))
 
         return "Unix Makefiles"
 
@@ -84,8 +80,7 @@ class CMakeCommandBuilder(object):
             return {}
 
         if not os.path.isfile(file_path):
-            logger.debug(
-                "cmake option file not found: path='{}'".format(file_path))
+            logger.debug("cmake option file not found: path='{}'".format(file_path))
             return {}
 
         with open(file_path) as f:
@@ -112,8 +107,7 @@ def main():
             return result
 
     if options.action in [BuildAction.RECMAKE]:
-        cmake_cache_path = "/".join([
-            compiler.build_dir_path, "CMakeCache.txt"])
+        cmake_cache_path = "/".join([compiler.build_dir_path, "CMakeCache.txt"])
         logger.debug("delete {:s}".format(cmake_cache_path))
         os.remove(cmake_cache_path)
 
@@ -122,12 +116,13 @@ def main():
         os.makedirs(build_dir)
 
     if options.action in [
-            BuildAction.CMAKE, BuildAction.RECMAKE,
-            BuildAction.BUILD, BuildAction.REBUILD
+        BuildAction.CMAKE,
+        BuildAction.RECMAKE,
+        BuildAction.BUILD,
+        BuildAction.REBUILD,
     ]:
         command_builder = CMakeCommandBuilder(options)
-        runner = subprocrunner.SubprocessRunner(
-            command_builder.get_cmake_commmand())
+        runner = subprocrunner.SubprocessRunner(command_builder.get_cmake_commmand())
 
         with Cd(build_dir):
             runner.run()

@@ -12,7 +12,6 @@ from ._logger import logger
 
 
 class Cd(object):
-
     def __init__(self, new_path):
         self.__new_path = os.path.expanduser(new_path)
         self.__saved_path = None

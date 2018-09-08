@@ -21,26 +21,33 @@ def parse_option():
     description = "A CLI tool for CMake and compiler wrapper."
     parser = argparse.ArgumentParser(
         formatter_class=argparse.RawDescriptionHelpFormatter,
-        description=description, epilog=dedent(
-                """\
+        description=description,
+        epilog=dedent(
+            """\
             Issue tracker: https://github.com/thombashi/cmakew/issues
-            """))
+            """
+        ),
+    )
 
     parser.add_argument(
-        "source_dir", metavar="SOURCE_DIR_PATH",
-        help="""relative path to the source directory.""")
+        "source_dir", metavar="SOURCE_DIR_PATH", help="""relative path to the source directory."""
+    )
 
     group = parser.add_argument_group("Directory Options")
     group.add_argument(
-        "--build-dir", default="build",
+        "--build-dir",
+        default="build",
         help="""
         relative path to the build output directory
         (defaults to '%(default)s').
-        """)
+        """,
+    )
 
     group = parser.add_argument_group("Build Options")
     group.add_argument(
-        "--action", choices=BuildAction.LIST, default=BuildAction.DEFAULT,
+        "--action",
+        choices=BuildAction.LIST,
+        default=BuildAction.DEFAULT,
         help="""
         cmake: execute CMake and exit.
         clean: delete existing build directory and exit.
@@ -49,7 +56,8 @@ def parse_option():
         rebuild: delete existing build directory and execute CMake and
         MSBuild after that.
         defaults to '%(default)s'.
-        """)
+        """,
+    )
 
     group = parser.add_argument_group("CMake Options")
     group.add_argument(
@@ -58,10 +66,14 @@ def parse_option():
         help="""
         path to the CMake options file. use "{key :value, ...}"
         to set specific parameters. defaults to %(default)s.
-        """)
+        """,
+    )
     group.add_argument(
-        "--build-type", choices=BuildType.LIST, default=BuildType.DEFAULT,
-        help="defaults to %(default)s.")
+        "--build-type",
+        choices=BuildType.LIST,
+        default=BuildType.DEFAULT,
+        help="defaults to %(default)s.",
+    )
     group.add_argument(
         "--generator",
         help="""
@@ -70,16 +82,25 @@ def parse_option():
         (a) if executed at Windows and Visual Studio is installed in C: or D:
         drive, cmakew pass 'Visual Studio NN'  as a generator to cmake.
         (b) "Unix Makefiles" otherwise
-        """)
+        """,
+    )
 
     group = parser.add_mutually_exclusive_group()
     group.add_argument(
-        "--debug", dest="log_level", action="store_const",
-        const=logbook.DEBUG, default=logbook.INFO,
-        help="for debug print.")
+        "--debug",
+        dest="log_level",
+        action="store_const",
+        const=logbook.DEBUG,
+        default=logbook.INFO,
+        help="for debug print.",
+    )
     group.add_argument(
-        "--quiet", dest="log_level", action="store_const",
-        const=QUIET_LOG_LEVEL, default=logbook.INFO,
-        help="suppress execution log messages.")
+        "--quiet",
+        dest="log_level",
+        action="store_const",
+        const=QUIET_LOG_LEVEL,
+        default=logbook.INFO,
+        help="suppress execution log messages.",
+    )
 
     return parser.parse_args()
