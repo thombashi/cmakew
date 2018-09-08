@@ -41,6 +41,9 @@ setuptools.setup(
     license="MIT License",
     long_description=long_description,
     packages=setuptools.find_packages(exclude=['test*']),
+    project_urls={
+        "Tracker": "{:s}/issues".format(REPOSITORY_URL),
+    },
 
     install_requires=install_requires,
     setup_requires=pytest_runner,
