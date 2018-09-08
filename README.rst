@@ -8,7 +8,7 @@ cmakew
 
 Summary
 -------
-A CMake wrapper tool.
+cmakew is a CMake wrapper CLI tool.
 
 
 Examples
