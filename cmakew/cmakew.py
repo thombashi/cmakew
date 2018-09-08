@@ -14,10 +14,10 @@ import platform
 import sys
 
 import logbook
-from logbook.more import ColorizedStderrHandler
 import six
 import subprocrunner
 import typepy
+from logbook.more import ColorizedStderrHandler
 
 from ._cd import Cd
 from ._common import BuildAction
