@@ -8,6 +8,7 @@ from __future__ import absolute_import
 from __future__ import unicode_literals
 
 import argparse
+from textwrap import dedent
 
 import logbook
 
@@ -23,10 +24,12 @@ DEFAULT_CMAKE_OPTIONS_FILE = "cmake_options.json"
 
 def parse_option():
     description = "A CLI tool for CMake and compiler wrapper."
-    epilog = ""
     parser = argparse.ArgumentParser(
         formatter_class=argparse.RawDescriptionHelpFormatter,
-        description=description, epilog=epilog)
+        description=description, epilog=dedent(
+                """\
+            Issue tracker: https://github.com/thombashi/cmakew/issues
+            """))
 
     parser.add_argument(
         "source_dir", metavar="SOURCE_DIR_PATH",
