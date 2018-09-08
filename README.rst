@@ -18,11 +18,11 @@ Build googletest at Linux
 
 .. code:: console
 
-    $ wget https://github.com/google/googletest/archive/release-1.8.0.tar.gz
-    $ tar xvf release-1.8.0.tar.gz
-    $ cmakew googletest-release-1.8.0/
-    [INFO] cmakew: -- The C compiler identification is GNU 6.2.1
-    -- The CXX compiler identification is GNU 6.2.1
+    $ wget https://github.com/google/googletest/archive/release-1.8.1.tar.gz
+    $ tar xvf release-1.8.1.tar.gz
+    $ cmakew googletest-release-1.8.1/
+    [INFO] cmakew: -- The C compiler identification is GNU 7.3.0
+    -- The CXX compiler identification is GNU 7.3.0
     -- Check for working C compiler: /usr/bin/cc
     -- Check for working C compiler: /usr/bin/cc -- works
     -- Detecting C compiler ABI info
@@ -35,39 +35,35 @@ Build googletest at Linux
     -- Detecting CXX compiler ABI info - done
     -- Detecting CXX compile features
     -- Detecting CXX compile features - done
-    -- Found PythonInterp: /root/.pyenv/shims/python (found version "2.7.12")
+    -- Found PythonInterp: /home/toor/.pyenv/versions/3.7.0/bin/python (found version "3.7")
     -- Looking for pthread.h
     -- Looking for pthread.h - found
     -- Looking for pthread_create
     -- Looking for pthread_create - not found
-    -- Looking for pthread_create in pthreads
-    -- Looking for pthread_create in pthreads - not found
-    -- Looking for pthread_create in pthread
-    -- Looking for pthread_create in pthread - found
+    -- Check if compiler accepts -pthread
+    -- Check if compiler accepts -pthread - yes
     -- Found Threads: TRUE
     -- Configuring done
     -- Generating done
     -- Build files have been written to: /home/github/build
 
     [INFO] cmakew: Scanning dependencies of target gtest
-    Scanning dependencies of target gmock
-    Scanning dependencies of target gmock_main
-    [  9%] Building CXX object googlemock/gtest/CMakeFiles/gtest.dir/src/gtest-all.cc.o
-    [ 18%] Building CXX object googlemock/CMakeFiles/gmock.dir/src/gmock-all.cc.o
-    [ 27%] Building CXX object googlemock/CMakeFiles/gmock.dir/__/googletest/src/gtest-all.cc.o
-    [ 36%] Building CXX object googlemock/CMakeFiles/gmock_main.dir/__/googletest/src/gtest-all.cc.o
-    [ 45%] Building CXX object googlemock/CMakeFiles/gmock_main.dir/src/gmock-all.cc.o
-    [ 54%] Linking CXX static library libgtest.a
-    [ 63%] Linking CXX static library libgmock.a
-    [ 72%] Building CXX object googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.o
-    [ 72%] Built target gtest
+    [ 12%] Building CXX object googlemock/gtest/CMakeFiles/gtest.dir/src/gtest-all.cc.o
+    [ 25%] Linking CXX static library libgtestd.a
+    [ 25%] Built target gtest
     Scanning dependencies of target gtest_main
-    [ 72%] Built target gmock
-    [ 81%] Building CXX object googlemock/gtest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o
-    [ 90%] Linking CXX static library libgtest_main.a
-    [ 90%] Built target gtest_main
-    [100%] Linking CXX static library libgmock_main.a
+    [ 37%] Building CXX object googlemock/gtest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o
+    Scanning dependencies of target gmock
+    [ 50%] Building CXX object googlemock/CMakeFiles/gmock.dir/src/gmock-all.cc.o
+    [ 62%] Linking CXX static library libgtest_maind.a
+    [ 62%] Built target gtest_main
+    [ 75%] Linking CXX static library libgmockd.a
+    [ 75%] Built target gmock
+    Scanning dependencies of target gmock_main
+    [ 87%] Building CXX object googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.o
+    [100%] Linking CXX static library libgmock_maind.a
     [100%] Built target gmock_main
+
 
 Output
 ~~~~~~~~~~~~
@@ -80,20 +76,21 @@ Output
     │   ├── gmock.dir
     │   ├── gmock_main.dir
     │   └── progress.marks
-    ├── CTestTestfile.cmake
-    ├── Makefile
     ├── cmake_install.cmake
+    ├── CTestTestfile.cmake
     ├── gtest
     │   ├── CMakeFiles
-    │   ├── CTestTestfile.cmake
-    │   ├── Makefile
     │   ├── cmake_install.cmake
-    │   ├── libgtest.a
-    │   └── libgtest_main.a
-    ├── libgmock.a
-    └── libgmock_main.a
+    │   ├── CTestTestfile.cmake
+    │   ├── generated
+    │   ├── libgtestd.a
+    │   ├── libgtest_maind.a
+    │   └── Makefile
+    ├── libgmockd.a
+    ├── libgmock_maind.a
+    └── Makefile
 
-    5 directories, 12 files
+    6 directories, 12 files
 
 
 Installation
@@ -107,7 +104,7 @@ cmakew help
 ========================
 .. code:: console
 
-    usage: cmakew [-h] [--build-dir BUILD_DIR]
+    usage: cmakew [-h] [-V] [--build-dir BUILD_DIR]
                   [--action {cmake,recmake,clean,build,rebuild}]
                   [--cmake-options CMAKE_OPTIONS] [--build-type {Debug,Release}]
                   [--generator GENERATOR] [--debug | --quiet]
@@ -120,6 +117,7 @@ cmakew help
 
     optional arguments:
       -h, --help            show this help message and exit
+      -V, --version         show program's version number and exit
       --debug               for debug print.
       --quiet               suppress execution log messages.
 
@@ -151,6 +149,8 @@ cmakew help
                             Windows and Visual Studio is installed in C: or D:
                             drive, cmakew pass 'Visual Studio NN' as a generator
                             to cmake. (b) "Unix Makefiles" otherwise
+
+    Issue tracker: https://github.com/thombashi/cmakew/issues
 
 
 Dependencies
