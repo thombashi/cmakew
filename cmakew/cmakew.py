@@ -14,6 +14,7 @@ import platform
 import sys
 
 import logbook
+from logbook.more import ColorizedStderrHandler
 import six
 import subprocrunner
 import typepy
@@ -26,7 +27,7 @@ from ._option import parse_option
 from ._visual_studio import vsinfo
 
 
-logbook.StderrHandler(
+ColorizedStderrHandler(
     level=logbook.DEBUG,
     format_string="[{record.level_name}] {record.channel}: {record.message}"
 ).push_application()
