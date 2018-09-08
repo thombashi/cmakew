@@ -4,13 +4,13 @@
 .. codeauthor:: Tsuyoshi Hombashi <tsuyoshi.hombashi@gmail.com>
 """
 
-from __future__ import absolute_import
-from __future__ import unicode_literals
-from collections import namedtuple
+from __future__ import absolute_import, unicode_literals
+
 import itertools
 import os.path
 import platform
 import re
+from collections import namedtuple
 
 
 def find_vs_solution_file_list(root_path):

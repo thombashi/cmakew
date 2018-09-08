@@ -5,8 +5,7 @@
 .. codeauthor:: Tsuyoshi Hombashi <tsuyoshi.hombashi@gmail.com>
 """
 
-from __future__ import absolute_import
-from __future__ import unicode_literals
+from __future__ import absolute_import, unicode_literals
 
 import errno
 import json
@@ -22,10 +21,7 @@ import typepy
 from ._cd import Cd
 from ._common import BuildAction
 from ._compiler import CompilerFactory
-from ._logger import (
-    logger,
-    set_log_level,
-)
+from ._logger import logger, set_log_level
 from ._option import parse_option
 from ._visual_studio import vsinfo
 

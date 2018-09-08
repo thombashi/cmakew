@@ -5,8 +5,7 @@
 .. codeauthor:: Tsuyoshi Hombashi <tsuyoshi.hombashi@gmail.com>
 """
 
-from __future__ import absolute_import
-from __future__ import unicode_literals
+from __future__ import absolute_import, unicode_literals
 
 import abc
 import os.path
@@ -18,10 +17,7 @@ import subprocrunner
 import typepy
 
 from ._logger import logger
-from ._visual_studio import (
-    find_vs_solution_file_list,
-    vsinfo,
-)
+from ._visual_studio import find_vs_solution_file_list, vsinfo
 
 
 @six.add_metaclass(abc.ABCMeta)

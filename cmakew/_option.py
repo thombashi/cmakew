@@ -4,19 +4,14 @@
 .. codeauthor:: Tsuyoshi Hombashi <tsuyoshi.hombashi@gmail.com>
 """
 
-from __future__ import absolute_import
-from __future__ import unicode_literals
+from __future__ import absolute_import, unicode_literals
 
 import argparse
 from textwrap import dedent
 
 import logbook
 
-from ._common import (
-    QUIET_LOG_LEVEL,
-    BuildAction,
-    BuildType,
-)
+from ._common import QUIET_LOG_LEVEL, BuildAction, BuildType
 
 
 DEFAULT_CMAKE_OPTIONS_FILE = "cmake_options.json"
