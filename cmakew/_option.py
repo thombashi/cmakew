@@ -11,6 +11,7 @@ from textwrap import dedent
 
 import logbook
 
+from .__version__ import __version__
 from ._common import QUIET_LOG_LEVEL, BuildAction, BuildType
 
 
@@ -28,6 +29,7 @@ def parse_option():
             """
         ),
     )
+    parser.add_argument("--version", action="version", version="%(prog)s " + __version__)
 
     parser.add_argument(
         "source_dir", metavar="SOURCE_DIR_PATH", help="""relative path to the source directory."""
