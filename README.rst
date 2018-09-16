@@ -4,7 +4,7 @@ cmakew
     :target: https://badge.fury.io/py/cmakew
 
 .. image:: https://img.shields.io/pypi/pyversions/cmakew.svg
-    :target: https://pypi.python.org/pypi/cmakew
+    :target: https://pypi.org/project/cmakew
 
 Summary
 -------
@@ -157,7 +157,7 @@ Dependencies
 ============
 Python 2.7+ or 3.4+
 
-- `logbook <http://logbook.readthedocs.io/en/stable/>`__
-- `six <https://pypi.python.org/pypi/six/>`__
+- `logbook <https://logbook.readthedocs.io/en/stable/>`__
+- `six <https://pypi.org/project/six/>`__
 - `subprocrunner <https://github.com/thombashi/subprocrunner>`__
 - `typepy <https://github.com/thombashi/typepy>`__
