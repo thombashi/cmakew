@@ -14,7 +14,7 @@ from collections import namedtuple
 
 
 def find_vs_solution_file_list(root_path):
-    re_solution = re.compile("[\.]sln$")
+    re_solution = re.compile(r"[\.]sln$")
     solution_file_path_list = []
 
     for filename in os.listdir(root_path):
@@ -27,8 +27,8 @@ def find_vs_solution_file_list(root_path):
 
 
 class VisualStudioInfo(object):
-    __RE_VS_DIR_NAME = re.compile("Microsoft Visual Studio [0-9]+[\.][0-9]+")
-    __RE_VS_VERSION = re.compile("[0-9]+[\.][0-9]+")
+    __RE_VS_DIR_NAME = re.compile(r"Microsoft Visual Studio [0-9]+[\.][0-9]+")
+    __RE_VS_VERSION = re.compile(r"[0-9]+[\.][0-9]+")
 
     VersionInfo = namedtuple("VersionInfo", "major minor")
 
