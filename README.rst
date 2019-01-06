@@ -2,9 +2,11 @@ cmakew
 ========
 .. image:: https://badge.fury.io/py/cmakew.svg
     :target: https://badge.fury.io/py/cmakew
+    :alt: PyPI package version
 
 .. image:: https://img.shields.io/pypi/pyversions/cmakew.svg
     :target: https://pypi.org/project/cmakew
+    :alt: Supported Python versions
 
 Summary
 -------
