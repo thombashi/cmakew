@@ -1,5 +1,13 @@
-cmakew
-========
+.. contents:: **cmakew**
+   :backlinks: top
+   :local:
+
+
+Summary
+==========
+cmakew is a CMake wrapper CLI tool.
+
+
 .. image:: https://badge.fury.io/py/cmakew.svg
     :target: https://badge.fury.io/py/cmakew
     :alt: PyPI package version
@@ -7,10 +15,6 @@ cmakew
 .. image:: https://img.shields.io/pypi/pyversions/cmakew.svg
     :target: https://pypi.org/project/cmakew
     :alt: Supported Python versions
-
-Summary
--------
-cmakew is a CMake wrapper CLI tool.
 
 
 Examples
