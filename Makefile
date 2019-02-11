@@ -1,7 +1,7 @@
 AUTHOR := thombashi
 PACKAGE := cmakew
-BUILD_DIR := build
 BUILD_WORK_DIR := _work
+DIST_DIR := $(BUILD_WORK_DIR)/$(PACKAGE)/dist
 
 
 .PHONY: build
@@ -13,18 +13,20 @@ build:
 		cd $(PACKAGE); \
 		python setup.py build
 	@twine check $(DIST_DIR)/*
+	ls $(DIST_DIR)
 
 .PHONY: clean
 clean:
 	@rm -rf $(PACKAGE)-*.*.*/ \
-		$(BUILD_DIR) \
 		$(BUILD_WORK_DIR) \
 		dist/ \
+		pip-wheel-metadata/ \
 		.eggs/ \
 		.pytest_cache/ \
 		.tox/ \
 		**/*/__pycache__/ \
 		*.egg-info/
+	@find . -not -path '*/\.*' -type f | grep -E .+\.py\.[a-z0-9]{32,}\.py$ | xargs -r rm
 
 .PHONY: fmt
 fmt:
