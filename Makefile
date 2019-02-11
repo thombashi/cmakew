@@ -12,6 +12,7 @@ build:
 		git clone https://github.com/$(AUTHOR)/$(PACKAGE).git; \
 		cd $(PACKAGE); \
 		python setup.py build
+	@twine check $(DIST_DIR)/*
 
 .PHONY: clean
 clean:
