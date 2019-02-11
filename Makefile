@@ -32,5 +32,5 @@ fmt:
 
 .PHONY: release
 release:
-	@cd $(BUILD_WORK_DIR)/$(PACKAGE); python setup.py release
+	@cd $(BUILD_WORK_DIR)/$(PACKAGE); python setup.py release --sign
 	@rm -rf $(BUILD_WORK_DIR)
