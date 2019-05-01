@@ -100,9 +100,19 @@ Output
 
 Installation
 ============
-.. code:: console
+Install from PyPI
+------------------------------
+::
 
     pip install cmakew
+
+Install from PPA (for Ubuntu)
+------------------------------
+::
+
+    sudo add-apt-repository ppa:thombashi/ppa
+    sudo apt update
+    sudo apt install cmakew
 
 
 cmakew help
