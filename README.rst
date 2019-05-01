@@ -24,8 +24,7 @@ Build googletest at Linux
 
 .. code:: console
 
-    $ wget https://github.com/google/googletest/archive/release-1.8.1.tar.gz
-    $ tar xvf release-1.8.1.tar.gz
+    $ wget -O - https://github.com/google/googletest/archive/release-1.8.1.tar.gz | tar zxf -
     $ cmakew googletest-release-1.8.1/
     [INFO] cmakew: -- The C compiler identification is GNU 7.3.0
     -- The CXX compiler identification is GNU 7.3.0
