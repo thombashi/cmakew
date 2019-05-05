@@ -170,7 +170,7 @@ cmakew help
 
 Dependencies
 ============
-Python 2.7+ or 3.4+
+Python 2.7+ or 3.5+
 
 - `logbook <https://logbook.readthedocs.io/en/stable/>`__
 - `six <https://pypi.org/project/six/>`__
